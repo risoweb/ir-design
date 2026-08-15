@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;600;900&display=swap');
+/* 1. TEMA GLOBAL - MUDE TUDO DAQUI */
+:root {
+  /* CORES */
+  --color-bg-1: #0a0104;
+  --color-bg-2: #070004;
+  --color-bg-3: #120204;
+  --color-text: #f4f4f8;
+  --color-text-muted: rgba(255, 255, 255, 0.75);
+  --color-accent: #fc3a63; /* seu travessão */
+  --color-button: #f3e8ff;
+  --color-mid: #363b3d; /* cor do título médio */
+
+  /* TIPOGRAFIA - troca só aqui quando confirmar a fonte */
+  --font-heading: 'Outfit', sans-serif; 
+  --font-body: 'Outfit', sans-serif;
+
+  /* ESPAÇOS */
+  --space-sm: 24px;
+  --space-md: 40px;
+  --space-lg: 80px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  background: linear-gradient(135deg, var(--color-bg-1) 0%, var(--color-bg-2) 50%, var(--color-bg-3) 100%);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.fullscreen-container {
+  width: 100%;
+  min-height: 100vh;
+  overflow: visible;
+  position: relative;
+}
+
+.fullscreen-3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.fullscreen-3d canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+/* HEADER - AJUSTADO */
+.top-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* Usamos porcentagem no padding lateral para dar mais respiro em telas médias */
+  padding: 20px 5%; 
+  background: rgba(10, 1, 4, 0.8); /* Um fundo levemente escuro para leitura */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Grupo do Logo */
+/* O grupo que mantém o quadrado e o texto juntos */
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espaço entre o quadrado e o texto */
+  flex-shrink: 0;
+}
+/* O quadrado da logo usando as variáveis do tema */
+.logo-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  /* Usamos a cor de destaque (accent) para a borda */
+  border: 2px solid var(--color-accent); 
+  /* O texto "IR" interno usa a cor de texto principal */
+  color: var(--color-text);
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  aspect-ratio: 1;
+  transition: all 0.3s ease;
+}
+
+/* O texto "DESIGN LAB" ao lado */
+.logo-text {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  font-size: 1rem;
+  /* Segue a cor de texto do tema */
+  color: var(--color-text);
+}
+
+/* Efeito opcional: quando passar o mouse no grupo da logo */
+.logo-group:hover .logo-mark {
+  background-color: var(--color-accent);
+  color: var(--color-bg-1); /* Inverte a cor para o fundo escuro */
+}
+/* Navegação Central */
+.header-nav {
+  display: flex;
+  gap: 24px; /* Diminuímos um pouco o gap para não espremer */
+  flex: 1; /* Faz o nav ocupar o espaço do meio */
+  justify-content: center; /* Centraliza os links entre o logo e o botão */
+}
+
+.header-nav a {
+  text-decoration: none;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.header-nav a:hover {
+  color: var(--color-accent);
+}
+
+/* Botão WhatsApp */
+.header-actions {
+  flex-shrink: 0; /* Impede o botão de diminuir */
+}
+
+.button-whatsapp {
+  background: #25d366; /* Cor padrão do WhatsApp */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.button-whatsapp:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVIDADE PARA MOBILE */
+@media (max-width: 850px) {
+  .header-nav {
+    display: none; /* Esconde o menu do meio em telas pequenas para não amontoar */
+  }
+  
+  .top-header {
+    padding: 15px 20px;
+  }
+}
+/* CONTEUDO */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto; /* tirei margin-top pra colar mais no menu */
+  padding: 140px 3% 80px; /* diminui de 80px pra 60px em cima */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: transparent;
+}
+
+.hero-panel {
+  max-width: 100%;
+  width: 100%;
+  padding: 40px 40px 48px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  background: transparent;
+  box-shadow: 0 32px 120px rgba(0, 0, 0, 0.25);
+  margin-bottom: 40px;
+}
+
+.hero-panel-columns {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: stretch;
+  min-height: 220px;
+}
+.hero-panel-column {
+  flex: 1;
+  min-width: 300px;
+}
+.left-column { text-align: left; }
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  text-align: right;
+  padding-left: 100px;
+  flex: 1;
+}
+/* Nova regra isolada para encolher a primeira coluna */
+.small-column {
+  flex: 400px; /* Não cresce, não encolhe, base fixa de 240px */
+  min-width: unset; /* Remove o limite de 300px só para ela */
+}
+/* Container das Fichas */
+.cards-container {
+  display: grid;
+  /* Criamos 3 colunas iguais */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+  width: 100%;
+}
+
+/* Estilo Base das Fichas (Contorno e Preenchimento) */
+.card {
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.06); /* Contorno sutil */
+  background: rgba(255, 255, 255, 0.02); /* Preenchimento leve */
+  border-radius: 5px;
+  backdrop-filter: blur(8px); /* Efeito de vidro fosco */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  background: rgba(252, 58, 99, 0.05); /* Um leve brilho rosa no hover */
+}
+
+/* Lógica de Tamanho */
+.card-large {
+  grid-column: span 2; /* Ocupa 2 das 3 colunas */
+}
+
+.card-small {
+  grid-column: span 1; /* Ocupa 1 das 3 colunas */
+}
+.card-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+.card-line span:first-child {  
+  color: var(--color-mid);
+}
+.card-line span:last-child {  
+  color: var(--color-accent);
+}
+/* Ajuste para o h3 dentro da ficha não ficar gigante */
+.card .hero-title-mid {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+/* RESPONSIVIDADE: No celular, tudo vira uma coluna só */
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* Uma coluna apenas */
+  }
+  
+  .card-large, .card-small {
+    grid-column: span 1; /* Todos ocupam a largura total */
+  }
+}
+/* 2. SISTEMA DE TIPOGRAFIA - REAPROVEITA CLASSES */
+.hero-eyebrow {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto var(--space-sm) auto;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(0.5rem, 1vw, 0.85rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: right;
+  padding: 0px 40px 0px;
+  font-family: var(--font-body);
+}
+
+.hero-title { /* virou o "título pequeno" */
+  margin: 0 0 16px 0;
+  position: relative;
+  padding-left: 30px;
+  font-size: clamp(0.5rem, 1vw, 0.85rem);
+  font-weight: 100;
+  font-family: var(--font-heading);
+  color: var(--color-text);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero-title::before { /* travessão vermelho na meia altura */
+  content: ''; 
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3ch;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.hero-title-visual { /* virou o "título gigante" */
+  margin: 0 0 30px 0;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 8vw, 6.66rem);
+  font-weight: 300; /* deixei mais fino */
+  line-height: 0.85;
+  color: var(--color-text);
+  letter-spacing: -1px;
+}
+.hero-title-highlight {
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: 400;
+}
+/* TERCEIRA OPÇÃO DE TÍTULO: O TÍTULO MÉDIO */
+.hero-title-mid {
+  font-family: var(--font-heading);
+  /* Tamanho intermediário: menor que o visual (6rem), maior que o copy (1.1rem) */
+  font-size: clamp(1.8rem, 6vw, 3.5rem); 
+  font-weight: 300; /* Um pouco menos pesado que o 900, mas ainda sólido */
+  line-height: 1.2;
+  
+  /* Mantemos a identidade das letras juntas, mas de forma mais suave */
+  letter-spacing: -0.02em; 
+  margin-bottom: 12px;
+}
+.hero-title-mid span {
+  font-style: italic;
+  /* Opcional: se o título pai for uppercase, o span pode ser 'none' 
+     para dar um contraste ainda maior de estilo */
+  text-transform: none; 
+  font-weight: 400; /* Um pouco mais fino para destacar o itálico */
+}
+.hero-copy {
+  margin: 0 0 var(--space-md) 0;
+  max-width: 560px;
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  font-family: var(--font-body);
+}
+/* PONTO ANIMADO TIPO LED */
+.dot-item {
+  position: relative;       /* pra posicionar o ponto */
+  padding-left: 24px;       /* espaço pro ponto */
+  margin-bottom: 12px;
+}
+
+.dot-item::before {
+  content: '';              /* cria o ponto */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-accent); /* vermelho do tema */
+  border-radius: 50%;       /* deixa redondo */
+  box-shadow: 0 0 8px var(--color-accent); /* brilho */
+  
+  /* ANIMAÇÃO: liga e apaga */
+  animation: blink 2s infinite;
+}
+.side-item {
+  border-left: 2px solid var(--color-mid);
+  padding-left: 15px;
+}
+/* Cada ponto pisca com delay diferente */
+.dot-item:nth-child(1)::before { animation-delay: 0s; }
+.dot-item:nth-child(2)::before { animation-delay: 0.4s; }
+.dot-item:nth-child(3)::before { animation-delay: 0.8s; }
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+ 50% {
+    opacity: 0.2;
+    transform: translateY(-50%) scale(0.8);
+  }
+}
+
+/* BOTÕES */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  font-family: var(--font-body);
+}
+
+.button-primary {
+  background: var(--color-button);
+  color: #1a0a2e;
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.button-secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.button-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero-panel-columns {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hero-panel-column.right-column {
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 0;
+  }
+  .hero-title-visual {
+    font-size: clamp(2.5rem, 12vw, 4rem); /* diminui no mobile */
+  }
+}
