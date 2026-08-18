@@ -397,7 +397,32 @@ body {
     transform: translateY(-50%) scale(0.8);
   }
 }
+/* hero 04 - 4 colunas */
+.trabalho-four-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+}
 
+.trabalho-col {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 1.2rem;
+  min-height: 260px;
+}
+
+/* Responsivo: vira 2 colunas no tablet, 1 no celular */
+@media (max-width: 1024px) {
+  .trabalho-four-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .trabalho-four-grid {
+    grid-template-columns: 1fr;
+  }
+}
 /* BOTÕES */
 .hero-actions {
   display: flex;
