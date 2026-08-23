@@ -113,6 +113,68 @@ function BrandScene() {
   )
 }
 
+
+function Footer() {
+  return (
+    <footer className="ir-footer">
+      {/* LINHA 1 - A QUE VC AMOU - FICHA TÉCNICA */}
+      <div className="footer-ficha">
+        <span className="ficha-label">FICHA TÉCNICA —</span>
+        <span>PROJETO / LAB-IR-2025-04</span>
+        <span className="ficha-sep">//</span>
+        <span>ESC 1:1</span>
+        <span className="ficha-sep">//</span>
+        <span>KRAFT</span>
+        <span className="ficha-sep">//</span>
+        <span>OFFSET</span>
+        <span className="ficha-sep">TOL ±0.5MM</span>
+      </div>
+
+      <div className="footer-inner">
+        <div className="trabalho-four-grid" style={{ marginTop: 0 }}>
+          <div className="trabalho-col footer-col">
+            <div className="logo-group" style={{ marginBottom: '1rem' }}>
+              <div className="logo-mark">IR</div>
+              <span className="logo-text">Design Lab</span>
+            </div>
+            <p className="hero-copy footer-copy">
+              Design de embalagens que contam histórias. Engenharia da forma aplicada.
+            </p>
+            <p className="hero-copy dot-item footer-copy-sm">Belém-PA · COP30 2025</p>
+          </div>
+
+          <div className="trabalho-col footer-col">
+            <p className="footer-title">Estúdio</p>
+            <a href="#inicio" className="footer-link">Manifesto</a>
+            <a href="#produtos" className="footer-link">Método</a>
+            <a href="#sobre" className="footer-link">Trabalho</a>
+          </div>
+
+          <div className="trabalho-col footer-col">
+            <p className="footer-title">Laboratório</p>
+            <a className="footer-link">Materiais</a>
+            <a className="footer-link">Sustentabilidade</a>
+            <a className="footer-link">Prêmios</a>
+          </div>
+
+          <div className="trabalho-col footer-col">
+            <p className="footer-title">Contato</p>
+            <p className="hero-copy footer-copy" style={{ fontWeight: 600 }}>ilson@ir.design</p>
+            <p className="hero-copy footer-copy">(91) 98237-3646</p>
+            <a href="https://wa.me/+5591982373646" className="footer-link">Instagram →</a>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <p>© 2025 IR DESIGN LAB · ENGENHARIA DA FORMA</p>
+          <p>PAPEL: KRAFT 250G · TINTA: SOJA · ORIGEM: PARÁ · WEBGL + REACT</p>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+
 function App() {
   return (
   <div className="fullscreen-container">
@@ -272,6 +334,7 @@ function App() {
         </div>
       </div>
     </main>
+      <Footer />
   </div>
 )
 }
