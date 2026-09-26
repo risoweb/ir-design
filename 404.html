@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Página não encontrada — IR Design Lab." />
+    <title>404 — IR Design Lab</title>
+    <style>
+      :root {
+        --bg: #0d0a12;
+        --bg-soft: #17131c;
+        --panel: rgba(255, 255, 255, 0.04);
+        --line: rgba(255, 255, 255, 0.12);
+        --text: #f4edf6;
+        --muted: #c2b4ca;
+        --pink: #ff4db8;
+        --purple: #b794ff;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        background:
+          radial-gradient(circle at top, rgba(255, 77, 184, 0.18), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(183, 148, 255, 0.14), transparent 25%),
+          var(--bg);
+        color: var(--text);
+        font-family: Inter, "Segoe UI", sans-serif;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        padding: 32px;
+      }
+
+      .card {
+        width: min(720px, 100%);
+        border: 1px solid var(--line);
+        background: var(--panel);
+        backdrop-filter: blur(10px);
+        padding: 48px 32px;
+        text-align: center;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.35);
+      }
+
+      .eyebrow {
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-size: 0.74rem;
+        margin: 0 0 18px;
+      }
+
+      .code {
+        font-size: clamp(4rem, 12vw, 9rem);
+        line-height: 0.9;
+        margin: 0;
+        font-weight: 800;
+        letter-spacing: -0.08em;
+        color: var(--text);
+      }
+
+      .code span {
+        background: linear-gradient(135deg, var(--pink), var(--purple));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      h1 {
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        margin: 18px 0 14px;
+        font-weight: 700;
+      }
+
+      p {
+        margin: 0 auto 24px;
+        max-width: 540px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .actions {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      a {
+        display: inline-block;
+        padding: 0.9rem 1.4rem;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        text-decoration: none;
+        color: var(--text);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+      }
+
+      a:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      .primary {
+        background: linear-gradient(135deg, var(--pink), var(--purple));
+        border: none;
+        color: #120b1a;
+        font-weight: 700;
+      }
+
+      .meta {
+        margin-top: 22px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        color: rgba(255,255,255,0.65);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card" role="main">
+      <p class="eyebrow">IR Design Lab</p>
+      <h1 class="code"><span>404</span></h1>
+      <h1>Página não encontrada</h1>
+      <p>
+        A rota acessada não existe ou foi movida. Você pode voltar ao início e continuar navegando pelo portfólio.
+      </p>
+      <div class="actions">
+        <a class="primary" href="/">Voltar para a home</a>
+        <a href="https://wa.me/+5591982373646" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+      </div>
+      <div class="meta">Engenharia da forma · design de interfaces</div>
+    </main>
+  </body>
+</html>
