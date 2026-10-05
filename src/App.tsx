@@ -1,5 +1,6 @@
 import { Suspense, useEffect, useRef } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import * as THREE from 'three'
 import './App.css'
 
@@ -115,6 +116,8 @@ function BrandScene() {
 
 
 function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="ir-footer">
       {/* LINHA 1 - A QUE VC AMOU - FICHA TÉCNICA */}
@@ -152,21 +155,21 @@ function Footer() {
 
           <div className="trabalho-col footer-col">
             <p className="footer-title">Laboratório</p>
-            <a className="footer-link">Materiais</a>
-            <a className="footer-link">Sustentabilidade</a>
-            <a className="footer-link">Prêmios</a>
+            <a href="#inicio" className="footer-link">Materiais</a>
+            <a href="#produtos" className="footer-link">Sustentabilidade</a>
+            <a href="#sobre" className="footer-link">Prêmios</a>
           </div>
 
           <div className="trabalho-col footer-col">
             <p className="footer-title">Contato</p>
             <p className="hero-copy footer-copy" style={{ fontWeight: 600 }}>ilson@ir.design</p>
             <p className="hero-copy footer-copy">(91) 98237-3646</p>
-            <a href="https://wa.me/+5591982373646" className="footer-link">Instagram →</a>
+            <a href="https://wa.me/+5591982373646" className="footer-link" target="_blank" rel="noopener noreferrer">Instagram →</a>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>© 2025 IR DESIGN LAB · ENGENHARIA DA FORMA</p>
+          <p>© {currentYear} IR DESIGN LAB · ENGENHARIA DA FORMA</p>
           <p>PAPEL: KRAFT 250G · TINTA: SOJA · ORIGEM: PARÁ · WEBGL + REACT</p>
         </div>
       </div>
@@ -175,168 +178,210 @@ function Footer() {
 }
 
 
-function App() {
+function HomePage() {
   return (
-  <div className="fullscreen-container">
-    <div className="fullscreen-3d">
-      <Canvas shadows dpr={[1, 2]} camera={{ position: [0, 1.8, 10], fov: 40 }}>
-        <Suspense fallback={null}>
-          <BrandScene />
-        </Suspense>
-      </Canvas>
-    </div>
-  <header className="top-header">
-    <div className="logo-group">
-      <div className="logo-mark">IR</div>
-      <span className="logo-text">Design Lab</span>
-    </div>
-    <nav className="header-nav">
-      <a href="#inicio">MANIFESTO</a>
-      <a href="#produtos">MÉTODO</a>
-      <a href="#sobre">TRABALHO</a>
-      <a href="#contato">CONTATO</a>
-    </nav>
-     <div className="header-actions">
-       <a href="https://wa.me/+5591982373646" className="button-whatsapp">WhatsApp</a>
-     </div>
-  </header>
-    <main className="hero-content" id="inicio">
-      <p className="hero-eyebrow">01 / Hero</p>
-      <div className="hero-panel">
-        <div className="hero-panel-columns">
-          <div className="hero-panel-column left-column">
-            <h1 className="hero-title">ESTÚDIO · ENGENHARIA DA FORMA</h1>
-            <h2 className="hero-title-visual">A forma <br />da <br /><span className="hero-title-highlight">engenharia</span>.</h2>
-            <p className="hero-copy">Um estúdio dedicado a transformar precisão em símbolo. Fragmentamos ideias em geometria — e as reconstruímos como marcas, produtos e experiências.</p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#produtos">Ver produtos</a>
-              <a className="button button-secondary" href="#personalizados">Fazer encomenda</a>
+    <div className="fullscreen-container">
+      <div className="fullscreen-3d">
+        <Canvas
+          shadows
+          dpr={[1, 2]}
+          camera={{ position: [0, 1.8, 10], fov: 40 }}
+          aria-hidden="true"
+        >
+          <Suspense fallback={null}>
+            <BrandScene />
+          </Suspense>
+        </Canvas>
+      </div>
+      <header className="top-header">
+        <div className="logo-group">
+          <div className="logo-mark">IR</div>
+          <span className="logo-text">Design Lab</span>
+        </div>
+        <nav className="header-nav">
+          <a href="#inicio">MANIFESTO</a>
+          <a href="#produtos">MÉTODO</a>
+          <a href="#sobre">TRABALHO</a>
+          <a href="#contato">CONTATO</a>
+        </nav>
+        <div className="header-actions">
+          <a href="https://wa.me/+5591982373646" className="button-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+      </header>
+      <main className="hero-content" id="inicio">
+        <p className="hero-eyebrow">01 / Hero</p>
+        <div className="hero-panel">
+          <div className="hero-panel-columns">
+            <div className="hero-panel-column left-column">
+              <h1 className="hero-title">ESTÚDIO · ENGENHARIA DA FORMA</h1>
+              <h2 className="hero-title-visual">A forma <br />da <br /><span className="hero-title-highlight">engenharia</span>.</h2>
+              <p className="hero-copy">Um estúdio dedicado a transformar precisão em símbolo. Fragmentamos ideias em geometria — e as reconstruímos como marcas, produtos e experiências.</p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#produtos">Ver projetos</a>
+                <a className="button button-secondary" href="#contato">Fazer encomenda</a>
+              </div>
             </div>
-          </div>
             <div className="hero-panel-column right-column">
               <p className="hero-eyebrow">SÍMBOLO VIVO</p>
               <p className="hero-copy side-item">O objeto ao centro é gerado em tempo real. Cada rolar de página revela um novo ângulo do mesmo pensamento.</p>
               <p className="hero-copy dot-item">Renderizado em tempo real · WebGL</p>
             </div>
+          </div>
         </div>
-      </div>
-      <div className="hero-panel">
-        <div className="hero-panel-columns">
-          <div className="hero-panel-column left-column">
-            <h1 className="hero-title">MÉTODO · 02</h1>
-            <h3 className="hero-title-mid">Quatro pilares.<br /><span>Um único objeto.</span></h3>              
+        <div className="hero-panel" id="produtos">
+          <div className="hero-panel-columns">
+            <div className="hero-panel-column left-column">
+              <h1 className="hero-title">MÉTODO · 02</h1>
+              <h3 className="hero-title-mid">Quatro pilares.<br /><span>Um único objeto.</span></h3>
+            </div>
+            <div className="hero-panel-column right-column">
+              <p>Nosso trabalho é o cubo fragmentado que gira ao lado. Peças distintas, tensão calculada, movimento contínuo.</p>
+            </div>
+            <div className="cards-container">
+              <div className="card card-large">
+                <p className="card-line"><span className="first-child">01</span> <span className="last-child">+</span></p>
+                <h3 className="hero-title-mid">Estrutura sólida</h3>
+                <p className="hero-copy">Cada projeto nasce de um sistema. Grade, tipografia, ritmo — a espinha que sustenta a superfície.</p>
+              </div>
+              <div className="card card-small">
+                <p className="card-line"><span className="first-child">02</span> <span className="last-child">+</span></p>
+                <h3 className="hero-title-mid">Inovação contínua</h3>
+                <p className="hero-copy">Prototipamos com engenharia. Iteramos com curiosidade. Entregamos com precisão.</p>
+              </div>
+              <div className="card card-small">
+                <p className="card-line"><span className="first-child">03</span> <span className="last-child">+</span></p>
+                <h3 className="hero-title-mid">Design premium</h3>
+                <p className="hero-copy">Materiais raros, tipografia editorial, animações cinéticas. Tudo o que uma marca séria merece — e nada além.</p>
+              </div>
+              <div className="card card-large">
+                <p className="card-line"><span className="first-child">04</span> <span className="last-child">+</span></p>
+                <h3 className="hero-title-mid">Escala fragmentada</h3>
+                <p className="hero-copy">Do pixel ao produto físico. Um sistema de identidade que se recompõe em qualquer meio, sem perder essência.</p>
+              </div>
+            </div>
           </div>
-          <div className="hero-panel-column right-column">
-            <p>Nosso trabalho é o cubo fragmentado que gira ao lado. Peças distintas, tensão calculada, movimento contínuo.</p>
+        </div>
+
+        <div className="hero-panel">
+          <div className="hero-panel-columns">
+            <div className="hero-panel-column left-column">
+              <h1 className="hero-title">MANIFESTO · 03</h1>
+              <p className="hero-copy">Escrito em fragmentos.<br />Lido em movimento.</p>
+            </div>
+            <div className="hero-panel-column small-column">
+              <h3 className="hero-title-mid">Acreditamos que <br /><span>precisão é </span><span className="hero-title-highlight">beleza</span>,<br />e que criatividade<br />é uma forma <span className="hero-title-highlight">de engenharia</span>.</h3>
+              <p className="hero-copy">Toda marca séria é um objeto em rotação. Vista de um ângulo, revela força. De outro, revela silêncio. Nunca completa, nunca inerte — sempre em movimento controlado.</p>
+              <p className="hero-copy">Nosso ofício é calibrar esse giro. Encontrar o eixo certo, a luz certa, o vazio necessário entre as peças. O resto é o que o observador constrói ao rolar a página.</p>
+            </div>
           </div>
-          <div className="cards-container">
-            <div className="card card-large">
+        </div>
+
+        <div className="hero-panel" id="sobre">
+          <div style={{ marginBottom: '2.5rem' }}>
+            <h1 className="hero-title">TRABALHOS · 04</h1>
+            <h3 className="hero-title-mid" style={{ fontSize: '3rem', marginTop: '0.5rem' }}>Fragmentos<span className="hero-title-highlight">.</span></h3>
+            <p className="hero-copy" style={{ maxWidth: '500px', marginTop: '1rem' }}>Quatro projetos de engenharia da forma aplicada ao mundo real.</p>
+          </div>
+
+          <div className="trabalho-four-grid">
+            <div className="trabalho-col">
               <p className="card-line"><span className="first-child">01</span> <span className="last-child">+</span></p>
-              <h3 className="hero-title-mid">Estrutura sólida</h3>
-              <p className="hero-copy">Cada projeto nasce de um sistema. Grade, tipografia, ritmo — a espinha que sustenta a superfície.</p>
+              <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>COP30</h4>
+              <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>Voluntariado · 2025 · Belém</p>
+              <p className="hero-copy" style={{ marginTop: '0.8rem' }}>Sistema visual fragmentado para relatórios de sustentabilidade. Grade modular inspirada nos cubos.</p>
+              <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>Projeto real</p>
             </div>
-            <div className="card card-small">
+
+            <div className="trabalho-col">
               <p className="card-line"><span className="first-child">02</span> <span className="last-child">+</span></p>
-              <h3 className="hero-title-mid">Inovação contínua</h3>
-              <p className="hero-copy">Prototipamos com engenharia. Iteramos com curiosidade. Entregamos com precisão.</p>    </div>
-            <div className="card card-small">
+              <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>EMPRESAS</h4>
+              <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>Produtos · 2025 · Premium</p>
+              <p className="hero-copy" style={{ marginTop: '0.8rem' }}>Identidade e produtos para empresas. Da forma à geometria do produto à embalagem.</p>
+              <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>Embalagem kraft</p>
+            </div>
+
+            <div className="trabalho-col">
               <p className="card-line"><span className="first-child">03</span> <span className="last-child">+</span></p>
-              <h3 className="hero-title-mid">Design premium</h3>
-              <p className="hero-copy">Materiais raros, tipografia editorial, animações cinéticas. Tudo o que uma marca séria merece — e nada além.</p>    
+              <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>IR Design Lab</h4>
+              <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>Estúdio · 2025 · Identidade</p>
+              <p className="hero-copy" style={{ marginTop: '0.8rem' }}>O próprio site que você está vendo. WebGL em tempo real, rotoscopia e engenharia da forma.</p>
+              <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>WebGL · React</p>
             </div>
-            <div className="card card-large">      
+
+            <div className="trabalho-col">
               <p className="card-line"><span className="first-child">04</span> <span className="last-child">+</span></p>
-              <h3 className="hero-title-mid">Escala fragmentada</h3>
-              <p className="hero-copy">Do pixel ao produto físico. Um sistema de identidade que se recompõe em qualquer meio, sem perder essência.</p>    
+              <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>Confeitaria</h4>
+              <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>SENAI · 2025 · Protótipo</p>
+              <p className="hero-copy" style={{ marginTop: '0.8rem' }}>Marca premium de confeitaria onde cada doce é um fragmento preciso. Sistema em desenvolvimento.</p>
+              <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>Em breve</p>
             </div>
           </div>
         </div>
-      </div>
-    
-      <div className="hero-panel">
-        <div className="hero-panel-columns">
-          <div className="hero-panel-column left-column">
-            <h1 className="hero-title">MANIFESTO · 03</h1>
-            <p className="hero-copy">Escrito em fragmentos.<br />Lido em movimento.</p>
-          </div>
-          <div className="hero-panel-column small-column">
-             <h3 className="hero-title-mid">Acreditamos que <br /><span>precisão é </span><span className="hero-title-highlight">beleza</span>,<br />e que criatividade<br />é uma forma <span className="hero-title-highlight">de engenharia</span>.</h3>
-             <p className="hero-copy">Toda marca séria é um objeto em rotação. Vista de um ângulo, revela força. De outro, revela silêncio. Nunca completa, nunca inerte — sempre em movimento controlado.</p>
-             <p className="hero-copy">Nosso ofício é calibrar esse giro. Encontrar o eixo certo, a luz certa, o vazio necessário entre as peças. O resto é o que o observador constrói ao rolar a página.</p>
-          </div>
-        </div>
-      </div>
-    
-      {/* HERO 04 - AGORA EM 4 COLUNAS */}
-      <div className="hero-panel">
-        {/* Título fica em cima, sozinho */}
-        <div style={{ marginBottom: '2.5rem' }}>
-          <h1 className="hero-title">TRABALHOS · 04</h1>
-          <h3 className="hero-title-mid" style={{ fontSize: '3rem', marginTop: '0.5rem' }}>Fragmentos<span className="hero-title-highlight">.</span></h3>
-          <p className="hero-copy" style={{ maxWidth: '500px', marginTop: '1rem' }}>Quatro projetos de engenharia da forma aplicada ao mundo real.</p>
-        </div>
 
-        {/* Grid de 4 colunas */}
-        <div className="trabalho-four-grid">
-          {/* COLUNA 1 */}
-          <div className="trabalho-col">
-            <p className="card-line"><span className="first-child">01</span> <span className="last-child">+</span></p>
-            <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>COP30</h4>
-            <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>Voluntariado · 2025 · Belém</p>
-            <p className="hero-copy" style={{ marginTop: '0.8rem' }}>Sistema visual fragmentado para relatórios de sustentabilidade. Grade modular inspirada nos cubos.</p>
-            <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>Projeto real</p>
-          </div>
-
-          {/* COLUNA 2 */}
-          <div className="trabalho-col">
-            <p className="card-line"><span className="first-child">02</span> <span className="last-child">+</span></p>
-            <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>EMPRESAS</h4>
-            <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>Produtos · 2025 · Premiun</p>
-            <p className="hero-copy" style={{ marginTop: '0.8rem' }}>Identidade e produtos para empresas. Da forma à geometria do produto à embalagem.</p>
-            <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>Embalagem kraft</p>
-          </div>
-
-          {/* COLUNA 3 */}
-          <div className="trabalho-col">
-            <p className="card-line"><span className="first-child">03</span> <span className="last-child">+</span></p>
-            <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>IR Design Lab</h4>
-            <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>Estúdio · 2025 · Identidade</p>
-            <p className="hero-copy" style={{ marginTop: '0.8rem' }}>O próprio site que você está vendo. WebGL em tempo real, rotoscopia e engenharia da forma.</p>
-            <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>WebGL · React</p>
-          </div>
-
-          {/* COLUNA 4 */}
-          <div className="trabalho-col">
-            <p className="card-line"><span className="first-child">04</span> <span className="last-child">+</span></p>
-            <h4 className="hero-title-mid" style={{ fontSize: '1.4rem', margin: '1rem 0' }}>Confeitaria</h4>
-            <p className="hero-copy" style={{ fontSize: '0.9rem', fontWeight: 600 }}>SENAI · 2025 · Protótipo</p>
-            <p className="hero-copy" style={{ marginTop: '0.8rem' }}>Marca premium de confeitaria onde cada doce é um fragmento preciso. Sistema em desenvolvimento.</p>
-            <p className="hero-copy dot-item" style={{ marginTop: '1rem' }}>Em breve</p>
-          </div>
-        </div>
-      </div>
-      <div className="hero-panel">
-        <div className="hero-panel-columns">
-          <div className="hero-panel-column left-column">
-            <h1 className="hero-title">CONVITE · 05</h1>
-            <h2 className="hero-title-visual">Contrua <br />o <span className="hero-title-highlight">futuro</span><br />conosco<span className="hero-title-highlight">.</span></h2>
-            <p className="hero-copy">Aceitamos quatro projetos por trimestre. Se a sua marca merece ser um objeto em rotação, começamos aqui.</p>
-            <div className="hero-actions">
-              <a className="button button-primary" href="#produtos">Enviar brienfing</a>
-              <a className="button button-secondary" href="#personalizados">Voltar ao início</a>
+        <div className="hero-panel" id="contato">
+          <div className="hero-panel-columns">
+            <div className="hero-panel-column left-column">
+              <h1 className="hero-title">CONVITE · 05</h1>
+              <h2 className="hero-title-visual">Contrua <br />o <span className="hero-title-highlight">futuro</span><br />conosco<span className="hero-title-highlight">.</span></h2>
+              <p className="hero-copy">Aceitamos quatro projetos por trimestre. Se a sua marca merece ser um objeto em rotação, começamos aqui.</p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="mailto:ilson@ir.design">Enviar briefing</a>
+                <a className="button button-secondary" href="#inicio">Voltar ao início</a>
+              </div>
             </div>
-          </div>
             <div className="hero-panel-column right-column">
               <p className="hero-eyebrow">VAGAS DISPONÍVEIS </p>
               <p className="hero-copy side-item">02/04</p>
               <p className="hero-copy dot-item">Q1 · 2026 · Aceitando briefings</p>
             </div>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+function NotFoundPage() {
+  return (
+    <div style={{
+      minHeight: '100vh',
+      display: 'grid',
+      placeItems: 'center',
+      background: '#0d0a12',
+      color: '#f4edf6',
+      padding: '32px',
+      textAlign: 'center',
+      fontFamily: 'Inter, Segoe UI, sans-serif',
+    }}>
+      <div style={{ maxWidth: '640px' }}>
+        <p style={{ letterSpacing: '0.28em', textTransform: 'uppercase', color: '#c2b4ca' }}>IR Design Lab</p>
+        <h1 style={{ fontSize: 'clamp(4rem, 12vw, 9rem)', margin: '0 0 16px', lineHeight: 0.9 }}>
+          <span style={{ background: 'linear-gradient(135deg, #ff4db8, #b794ff)', WebkitBackgroundClip: 'text', color: 'transparent' }}>404</span>
+        </h1>
+        <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 3rem)', margin: '0 0 16px' }}>Página não encontrada</h2>
+        <p style={{ color: '#c2b4ca', lineHeight: 1.7 }}>
+          A rota acessada não existe neste portfólio. Volte para a home para continuar a navegação.
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <a href="#/" style={{ display: 'inline-block', padding: '0.9rem 1.4rem', background: 'linear-gradient(135deg, #ff4db8, #b794ff)', color: '#120b1a', textDecoration: 'none', fontWeight: 700 }}>Voltar para a home</a>
+          <a href="https://wa.me/+5591982373646" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', padding: '0.9rem 1.4rem', border: '1px solid rgba(255,255,255,0.16)', color: '#f4edf6', textDecoration: 'none' }}>Falar no WhatsApp</a>
         </div>
       </div>
-    </main>
-      <Footer />
-  </div>
-)
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="*" element={<NotFoundPage />} />
+      <Route path="/404" element={<NotFoundPage />} />
+      <Route path="/404.html" element={<NotFoundPage />} />
+      <Route path="/home" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
 }
 
 export default App
