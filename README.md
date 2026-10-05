@@ -1,3 +1,45 @@
+# IR Design Portfolio 🎨
+
+> Um portfólio moderno combinando design, código e experiências 3D interativas.
+
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)
+![React](https://img.shields.io/badge/React-18.x-61dafb.svg)
+![Vite](https://img.shields.io/badge/Vite-5.x-646cff.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+[Live Demo](https://ir-design.vercel.app/) | [Sobre Mim](#sobre) | [Projetos](#projetos) | [Contato](#contato)
+
+---
+
+## ✨ Sobre
+
+Este portfólio demonstra minha jornada como desenvolvedor(a), combinando:
+- **Design visual** moderno e intuitivo
+- **Código limpo** e estruturado
+- **Experiências 3D interativas** com WebGL
+
+Construído com tecnologias modernas para oferecer uma experiência imersiva aos visitantes.
+
+---
+
+## 🛠️ Tech Stack
+
+| Frontend | 3D/Visual | Build/Tools |
+|----------|-----------|-------------|
+| React 18 | React Three Fiber | Vite |
+| TypeScript | Drei | ESLint |
+| CSS/Tailwind | Three.js | Git |
+
+### Dependências Principais
+
+```json
+{
+  "react": "^18.x",
+  "typescript": "^5.x",
+  "@react-three/fiber": "^8.x",
+  "@react-three/drei": "^9.x",
+  "three": "^0.15.x"
+}
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
